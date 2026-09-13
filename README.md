@@ -1,20 +1,55 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# RentBook PRO 🏢⚡
 
-# Run and deploy your AI Studio app
+> A smart rental and electricity diary built for modern landlords to track rooms, automate billing cycles, calculate meter readings, and share digital receipts with embedded UPI QR codes.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/39bb8b7e-75aa-4d9f-89c0-417fd44a7e59
+## 📱 App Previews
 
-## Run Locally
+| Units & Bills Dashboard | Digital Receipt & UPI QR |
+| :---: | :---: |
+| <img src="./screenshots/dashboard.png" width="360" alt="Dashboard" /> | <img src="./screenshots/receipt.png" width="360" alt="Rent Receipt" /> |
 
-**Prerequisites:**  Node.js
+| Collection Analytics Drawer | Invoice Payment History |
+| :---: | :---: |
+| <img src="./screenshots/analysis.png" width="360" alt="Analytics" /> | <img src="./screenshots/history.png" width="360" alt="Invoice History" /> |
 
+| Settings & Profile (Dark Slate) | Appearance (Clean Light) |
+| :---: | :---: |
+| <img src="./screenshots/settings.png" width="360" alt="Settings Dark" /> | <img src="./screenshots/light%20mode.png" width="360" alt="Settings Light" /> |
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## ⚡ Core Features
+
+* **Multi-Floor & Unit Management:** Add custom floors, organize rooms/flats, assign tenants, and monitor occupancy status (Occupied vs. Vacant) at a glance.
+* **Smart Electricity Billing:** Track previous and current meter readings with configurable per-unit electricity rates and photo meter proof.
+* **Instant Digital Receipts:** Generate itemized rent receipts with direct UPI QR codes, instant WhatsApp dispatch, PDF download, and clipboard copy.
+* **Collection Analytics:** Real-time reconciliation dashboard showing collection rate percentages, collected vs. pending amounts, and per-floor revenue breakdowns.
+* **Billing History Ledger:** Filter invoices by Paid or Pending status, search by tenant name or room number, and mark payments with one tap.
+* **Dual Theme Engine:** Seamless switching between Dark Slate and Clean Light UI.
+* **Cloud Sync & Data Safety:** Supabase backend integration with JSON backup export options.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend Framework** | React 19 + TypeScript |
+| **Build Tool & Bundler** | Vite |
+| **Styling & Design** | Tailwind CSS |
+| **Icons** | Lucide React |
+| **Database & Auth** | Supabase (PostgreSQL + Auth) |
+| **PDF Generation** | jsPDF / Canvas |
+| **Deployment Target** | Vercel |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone & Install
+```bash
+git clone [https://github.com/newuser8090/RentBook.git](https://github.com/newuser8090/RentBook.git)
+cd RentBook
+npm install
