@@ -1,0 +1,105 @@
+{
+  "entities": {
+    "Floor": {
+      "title": "Floor",
+      "description": "Represents a building floor or block in the rental property",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "order": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "order"]
+    },
+    "Unit": {
+      "title": "Unit",
+      "description": "Represents a rental unit, room, or flat on a specific floor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "floorId": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "tenantName": { "type": "string", "maxLength": 150 },
+        "tenantPhone": { "type": "string", "maxLength": 20 },
+        "monthlyRent": { "type": "number" },
+        "occupancyStatus": { "type": "string", "enum": ["occupied", "vacant", "not_for_rent", "maintenance"] },
+        "previousMeterReading": { "type": "number" },
+        "meterNumber": { "type": "string", "maxLength": 50 },
+        "depositAmount": { "type": "number" },
+        "moveInDate": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "isNotForRent": { "type": "boolean" },
+        "isArchived": { "type": "boolean" },
+        "archivedDate": { "type": "string" }
+      },
+      "required": ["id", "floorId", "name", "occupancyStatus", "previousMeterReading"]
+    },
+    "Bill": {
+      "title": "Bill",
+      "description": "Monthly rent and electricity invoice record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "billNumber": { "type": "string", "maxLength": 60 },
+        "unitId": { "type": "string", "maxLength": 128 },
+        "unitName": { "type": "string", "maxLength": 100 },
+        "floorName": { "type": "string", "maxLength": 100 },
+        "tenantName": { "type": "string", "maxLength": 150 },
+        "tenantPhone": { "type": "string", "maxLength": 20 },
+        "billingMonth": { "type": "string", "maxLength": 50 },
+        "generatedDate": { "type": "string", "maxLength": 50 },
+        "baseRent": { "type": "number" },
+        "previousReading": { "type": "number" },
+        "currentReading": { "type": "number" },
+        "unitsConsumed": { "type": "number" },
+        "electricityRate": { "type": "number" },
+        "electricityAmount": { "type": "number" },
+        "otherCharges": { "type": "number" },
+        "otherChargesNote": { "type": "string", "maxLength": 500 },
+        "discount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "paid"] },
+        "paidDate": { "type": "string", "maxLength": 50 },
+        "paymentMode": { "type": "string", "enum": ["UPI", "Cash", "Bank Transfer", "Cheque"] },
+        "upiId": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "billNumber", "unitId", "billingMonth", "totalAmount", "status"]
+    },
+    "LandlordSettings": {
+      "title": "LandlordSettings",
+      "description": "Landlord property preferences, default rates, and UPI payment details",
+      "type": "object",
+      "properties": {
+        "landlordName": { "type": "string", "maxLength": 150 },
+        "landlordPhone": { "type": "string", "maxLength": 20 },
+        "propertyName": { "type": "string", "maxLength": 150 },
+        "defaultElectricityRate": { "type": "number" },
+        "upiId": { "type": "string", "maxLength": 100 },
+        "upiPayeeName": { "type": "string", "maxLength": 150 },
+        "currencySymbol": { "type": "string", "maxLength": 10 },
+        "paymentDueDay": { "type": "number" },
+        "customQrCodeUrl": { "type": "string", "maxLength": 500000 }
+      },
+      "required": ["landlordName", "propertyName", "defaultElectricityRate"]
+    }
+  },
+  "firestore": {
+    "/floors/{floorId}": {
+      "schema": "Floor",
+      "description": "Building floor metadata"
+    },
+    "/units/{unitId}": {
+      "schema": "Unit",
+      "description": "Rental units and active tenant assignments"
+    },
+    "/bills/{billId}": {
+      "schema": "Bill",
+      "description": "Generated monthly invoices and payment status"
+    },
+    "/settings/{settingId}": {
+      "schema": "LandlordSettings",
+      "description": "Global landlord configuration and UPI settings"
+    }
+  }
+}
