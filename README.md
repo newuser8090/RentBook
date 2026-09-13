@@ -46,10 +46,3 @@
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone & Install
-```bash
-git clone [https://github.com/newuser8090/RentBook.git](https://github.com/newuser8090/RentBook.git)
-cd RentBook
-npm install
